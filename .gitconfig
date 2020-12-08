@@ -1,7 +1,0 @@
-[user]
-	email = EMAIL
-	name = Ferdinand Eiteneuer
-[core]
-	editor = vim
-[color "status"]
-	untracked = "#f54327"
