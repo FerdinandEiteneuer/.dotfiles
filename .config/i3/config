@@ -268,10 +268,6 @@ bar {
 	}
 }
 
-
-# lockscreen
-bindsym $mod+f exec $HOME/.config/i3/scripts/lock/lock.sh #i3lock --color "$bg-color"
-
 # fading animations for switching between windows/workspaces
 exec compton -f
 #exec_always compton --config ~/.config/compton.conf
@@ -281,7 +277,7 @@ exec_always feh --bg-scale ~/.config/i3/wallpaper.png
 
 # Programs to start when logging in
 exec rhythmbox
-exec pycharm-community
+#exec pycharm-community
 exec firefox
 exec i3-sensible-terminal -e "vim ~/.config/i3/config"
 
@@ -294,4 +290,8 @@ bindsym $mod+z exec $HOME/.config/i3/scripts/bluetooth/bluetooth_connect.sh $hea
 #bindsym $mod+z exec bluetoothctl connect $headset
 bindsym $mod+m exec bluetoothctl connect $musicbox
 bindsym $mod+b exec bluetoothctl disconnect
+
+# lockscreen
+#bindsym $mod+f exec $HOME/.config/i3/scripts/lock/lock.sh
+bindsym $mod+f exec $HOME/.config/i3/scripts/exit_menu/exit.sh
 
