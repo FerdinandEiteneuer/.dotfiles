@@ -1,3 +1,4 @@
+#!/bin/bash
 #script for gathering configs and putting them in this repository
 
 REPO_DIR=~/.dotfiles

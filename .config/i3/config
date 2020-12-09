@@ -12,6 +12,7 @@
 set $mod Mod4
 set $font KacstOne
 set $fontsize 13
+set $config_dir $HOME/.config/i3
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -50,7 +51,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
-default_border pixel 8
+default_border pixel 5
 #default_border normal|pixel <px>
 default_floating_border none
 #default_floating_border normal|pixel <px>
@@ -269,7 +270,7 @@ bar {
 
 
 # lockscreen
-bindsym $mod+F exec bash $HOME/.config/i3/lock.sh #i3lock --color "$bg-color"
+bindsym $mod+f exec $HOME/.config/i3/scripts/lock/lock.sh #i3lock --color "$bg-color"
 
 # fading animations for switching between windows/workspaces
 exec compton -f
@@ -287,7 +288,10 @@ exec i3-sensible-terminal -e "vim ~/.config/i3/config"
 # shortcut to connect to bluetooth headset + jplflip 5
 set $headset "38:18:4C:24:E6:B5"
 set $musicbox "B8:F6:53:12:DC:B1"
-bindsym $mod+z exec bluetoothctl connect $headset
+
+bindsym $mod+z exec $HOME/.config/i3/scripts/bluetooth/bluetooth_connect.sh $headset
+
+#bindsym $mod+z exec bluetoothctl connect $headset
 bindsym $mod+m exec bluetoothctl connect $musicbox
 bindsym $mod+b exec bluetoothctl disconnect
 
