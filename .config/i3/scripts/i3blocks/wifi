@@ -22,25 +22,41 @@ INTERFACE="${BLOCK_INSTANCE:-wlan0}"
 
 # As per #36 -- It is transparent: e.g. if the machine has no battery or wireless
 # connection (think desktop), the corresponding block should not be displayed.
-[[ ! -d /sys/class/net/${INTERFACE}/wireless ]] ||
-    [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]] && exit
+#[[ ! -d /sys/class/net/${INTERFACE}/wireless ]] ||
+#    [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]] && exit
 
 #------------------------------------------------------------------------
 
 QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
 
 #------------------------------------------------------------------------
+# old way with signal strength.
+#echo $QUALITY% # full text
+#echo $QUALITY% # short text
 
-echo $QUALITY% # full text
-echo $QUALITY% # short text
+
+echo  # full text
+echo  # short text
+#exit 33
+
+# Mouse Events
+case $BLOCK_BUTTON in
+	1) i3-msg "exec gnome-terminal --class floater -e 'nmtui'";; # l click
+	#1) i3-msg "exec gnome-terminal --class floater -e 'nmapplet'";; # l click
+	2) ;; # middle clock click
+	3) ;; # right click, mute/unmute
+	4) ;; # scroll up, increase
+	5) ;; # scroll down, decrease
+esac
+
 
 # color
 if [[ $QUALITY -ge 80 ]]; then
-    echo "#00FF00"
+    echo "#9FD84F"
 elif [[ $QUALITY -lt 80 ]]; then
-    echo "#FFF600"
+    echo "#E6E854"
 elif [[ $QUALITY -lt 60 ]]; then
-    echo "#FFAE00"
+    echo "#E8BE54"
 elif [[ $QUALITY -lt 40 ]]; then
-    echo "#FF0000"
+    echo "#E89254"
 fi

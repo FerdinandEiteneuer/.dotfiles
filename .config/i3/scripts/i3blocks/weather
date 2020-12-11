@@ -53,6 +53,9 @@ case $CONDITION in
 	'Fog')
 		WEATHER_ICON=$ICON_FOG
 		;;
+	'Storm')
+		WEATHER_ICON=$ICON_STORM
+		;;
 	'*')
 		WEATHER_ICON="?"
 		;;
