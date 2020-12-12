@@ -21,3 +21,19 @@ Sessionx.vim
 tags
 # Persistent undo
 [._]*.un~
+
+
+.config/i3/scripts/i3blocks/backup_volume
+.config/i3/scripts/i3blocks/wifi_backup
+.config/i3/scripts/lock/.lock.sh.swp
+.config/i3/scripts/weather/exit.sh
+.config/i3/scripts/weather/info.txt
+.config/i3/scripts/weather/ne_info.txt
+.config/i3/scripts/weather/openweather2.sh
+.config/i3/scripts/weather/openweather3.sh
+.config/i3/scripts/weather/test1.sh
+.config/i3/scripts/weather/test2.sh
+.config/i3/scripts/weather/testoutput_openweather.json
+.config/i3/test
+
+replace_my_email.sh

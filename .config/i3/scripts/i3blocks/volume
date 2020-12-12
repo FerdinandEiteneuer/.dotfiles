@@ -26,6 +26,12 @@ MIXER="default"
 [ -n "$(lsmod | grep pulse)" ] && MIXER="pulse"
 [ -n "$(lsmod | grep jack)" ] && MIXER="jackplug"
 MIXER="${2:-$MIXER}"
+	
+
+ICON_VOLUME_LOW=
+ICON_VOLUME_MEDIUM=
+ICON_VOLUME_HIGH=
+ICON_VOLUME_MUTED=
 
 # The instance option sets the control to report and configure
 # This defaults to the first control of your selected mixer
@@ -34,6 +40,7 @@ SCONTROL="${BLOCK_INSTANCE:-$(amixer -D $MIXER scontrols |
                   sed -n "s/Simple mixer control '\([A-Za-z ]*\)',0/\1/p" |
                   head -n1
                 )}"
+
 
 # The first parameter sets the step to change the volume by (and units to display)
 # This may be in in % or dB (eg. 5% or 3dB)
@@ -67,4 +74,35 @@ case $BLOCK_BUTTON in
   5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute ;; # scroll down, decrease
 esac
 
-volume | format
+SOUND_ACTIVATED_OCCURENCES="$(amixer -D pulse | grep 'Playback' | grep -wc 'on')"
+# explanation option w: match "on" exacty, dont catch words like "Front"
+# 		     c: wordcount
+
+VOLUME=`volume | format`
+VOL=${VOLUME::-1} #  get rid of %
+
+
+if [[ $SOUND_ACTIVATED_OCCURENCES == "2" ]]; then
+    if [[ $VOL -ge 67 ]]; then
+        ICON_VOLUME=$ICON_VOLUME_HIGH
+    elif [[ $VOL -ge 33 ]]; then
+        ICON_VOLUME=$ICON_VOLUME_MEDIUM
+    else
+        ICON_VOLUME=$ICON_VOLUME_LOW
+    fi
+else
+    ICON_VOLUME=$ICON_VOLUME_MUTED
+    echo $ICON_VOLUME
+    exit
+fi
+
+
+
+
+#if [[ $VOLUME == "MUTE" ]]; then
+#  echo "String is empty"
+#elif [[ -n "$string" ]]; then
+#  echo "String is not empty"
+#fi
+
+echo $ICON_VOLUME $VOLUME

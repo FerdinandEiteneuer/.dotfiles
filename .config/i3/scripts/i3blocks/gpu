@@ -1,0 +1,8 @@
+#!/bin/bash
+
+GPU_LOAD=$(nvidia-smi --query-gpu=utilization.gpu --format=csv | tail -1 | sed 's/ %//g')
+
+
+GPU_SYMBOL=""
+
+echo "$GPU_SYMBOL ${GPU_LOAD}%"
