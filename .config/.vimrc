@@ -17,7 +17,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8' " pep8 checking
+"Plugin 'nvie/vim-flake8' " pep8 checking
 
 " ...
 
@@ -27,7 +27,7 @@ filetype plugin indent on    " required
 
 
 let g:SimpylFold_docstring_preview=1
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_completion=0
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "nnoremap s h
@@ -45,6 +45,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" show full filepath
+nnoremap <C-G> 1<C-G>
 
 " Enable folding
 set foldmethod=indent
@@ -55,14 +57,15 @@ nnoremap <space> za
 
 
 " PEP 8 compliant indentation
+
 au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+    \| set tabstop=4
+    \| set softtabstop=4
+    \| set shiftwidth=4
+    \| set textwidth=79
+    \| set expandtab
+    \| set autoindent
+    \| set fileformat=unix
 
 
 aut BufNewFile,BufRead *.sh
@@ -84,6 +87,7 @@ set nu  " line numbers
 
 let python_highlight_all=1
 syntax on
+
 
 
 vmap <C-c> "+yi
