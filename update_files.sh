@@ -9,6 +9,7 @@ cd $REPO_DIR/.config
 cp -r ~/.config/i3 .
 cp ~/.gitconfig .
 cp ~/.vimrc .
+cp -r ~/.config/fish .
 
 
 # delete my hardcoded email adresses which might be present in the dotfiles
