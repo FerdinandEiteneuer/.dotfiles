@@ -1,0 +1,51 @@
+#!/bin/bash
+# bluetooth utility
+
+BLUETOOTH_SYMBOL=""
+
+HEADSET_SYMBOL=""
+MUSICBOX_SYMBOL="BOX"
+SMARTPHONE_SYMBOL=""
+
+UNKNOWN_CONNECTION_SYMBOL=""
+NOTHING_CONNECTED_SYMBOL="n/a"
+
+MAC_HEADSET="38:18:4C:24:E6:B5"
+MAC_SMARTPHONE="CC:21:19:86:5F:E7"
+MAC_MUSICBOX="B8:F6:53:12:DC:B1"
+
+declare -A devices=( ["$MAC_HEADSET"]=$HEADSET_SYMBOL
+                     ["$MAC_SMARTPHONE"]=$SMARTPHONE_SYMBOL
+                     ["$MAC_MUSICBOX"]=$MUSICBOX_SYMBOL)
+
+
+function is_connected (){  # checks if a given mac adress is connected
+
+    connected=$(bluetoothctl info $1 | grep -c "Connected: yes")
+    
+    if [[ $connected = "1" ]]; then
+        echo "1"
+    else
+        echo "0"
+    fi
+}
+
+
+if [[ $(bluetoothctl info) == "Missing device address argument" ]]; then
+    INFO_SYMBOL=$NOTHING_CONNECTED_SYMBOL
+else
+    INFO_SYMBOL=$UNKNOWN_CONNECTION_SYMBOL
+fi
+
+# loop over all registered mac adresses and check if connected
+for mac_adress in "${!devices[@]}"
+do
+    #echo checking mac adress $mac_adress ${devices[$mac_adress]}
+    if [[ $(is_connected $mac_adress) = "1" ]]; then
+        INFO_SYMBOL=${devices[$mac_adress]}
+        #echo -- $mac_adress $INFO_SYMBOL --
+        break
+    fi
+done
+
+echo "$BLUETOOTH_SYMBOL $INFO_SYMBOL"

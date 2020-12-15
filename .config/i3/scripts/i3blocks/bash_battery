@@ -1,0 +1,29 @@
+#!/bin/bash
+
+
+BATTERY_FULL="";
+BATTERY_THREE_QUARTERS="";
+BATTERY_HALF="";
+BATTERY_QUARTER="";
+BATTERY_EMPTY="";
+
+BATTERY_CHARGING=""
+BATTERY_DISCHARGING=""
+
+CHARGING_STATUS=$(acpi -b | grep -c "discharging")
+#PERCENTAGE=$(python ./alt_battery_python.py)
+
+python ./alt_battery_python.py
+PERCENTAGE=$?
+
+if [[ $CHARGING_STATUS == "1" ]]; then
+    STATUS=$BATTERY_DISCHARGING
+else
+    STATUS=$BATTERY_CHARGING
+fi
+
+if [[ $PERCENTAGE -eq -1 ]]; then
+    PERCENTAGE="n/a"
+fi
+
+echo "${STATUS} ${PERCENTAGE}0%"

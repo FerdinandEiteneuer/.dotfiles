@@ -16,6 +16,15 @@ use strict;
 use warnings;
 use utf8;
 
+my $battery_full = "";
+my $battery_three_quarters = "";
+my $battery_half = "";
+my $battery_quarter = "";
+my $battery_empty = "";
+
+my $battery_charging = "";
+my $battery_discharging = "";
+
 my $acpi;
 my $status;
 my $percent;
@@ -35,13 +44,19 @@ if ($acpi !~ /: (\w+), (\d+)%/) {
 
 $status = $1;
 $percent = $2;
-$full_text = "$percent%";
+
+
+#$full_text = "$percent%";
 
 if ($status eq 'Discharging') {
-	$full_text .= ' DIS';
+    #$full_text .= ' DIS';
+    $full_text = $battery_discharging;
 } elsif ($status eq 'Charging') {
-	$full_text .= ' CHR';
+    #$full_text .= ' CHR';
+    $full_text = $battery_charging;
 }
+
+$full_text .= "$percent%";
 
 $short_text = $full_text;
 
