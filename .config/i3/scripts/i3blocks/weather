@@ -1,15 +1,15 @@
 #!/bin/bash
 # using openweather to get data
 
-APIKEY="87f2bfc5bc1599546ca906b46224a667"
+APIKEY="APIKEY"
 
 
 # this magically does not work. there is no reason because
-# since CITY_ID in this case is exactly "aachen" aswell.
+# since CITY_ID in this case is exactly "CITY" aswell.
 # when i3blocks executes the scripts, this is NOT the case however!
 #CITY_ID=$(~/.config/i3/scripts/weather/get_city.sh)
 
-CITY_ID="aachen"
+CITY_ID="CITY"
 
 
 URL="http://api.openweathermap.org/data/2.5/weather?q=${CITY_ID}&units=metric&APPID=${APIKEY}"

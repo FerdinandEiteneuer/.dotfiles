@@ -1,5 +1,5 @@
 replace_my_email.sh
-
+remove_sensitive_info.sh
 test
 
 # Swap
@@ -35,5 +35,3 @@ tags
 .config/i3/scripts/weather/test2.sh
 .config/i3/scripts/weather/testoutput_openweather.json
 .config/i3/test
-
-replace_my_email.sh

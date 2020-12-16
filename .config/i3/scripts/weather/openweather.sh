@@ -3,10 +3,10 @@
 
 LC_CTYPE=en_US.utf8
 
-APIKEY="87f2bfc5bc1599546ca906b46224a667"
+APIKEY="APIKEY"
 
 
-CITY_ID="aachen"
+CITY_ID="BERLIN"
 
 source ~/.config/i3/scripts/weather/get_city.sh
 

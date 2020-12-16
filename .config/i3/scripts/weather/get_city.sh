@@ -5,5 +5,5 @@ LOCATION=$(curl -s "https://tools.keycdn.com/geo.json?host=$PUBLIC_IP" | jq .dat
 LOCATION=${LOCATION,,} # to lower case
 
 echo $LOCATION
-#export MY_LOCATION="aachen"
+#export MY_LOCATION="CITY"
 #export MY_LOCATION=$LOCATION

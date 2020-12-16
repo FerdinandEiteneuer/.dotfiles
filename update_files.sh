@@ -14,4 +14,4 @@ cp -r ~/.config/fish .
 
 # delete my hardcoded email adresses which might be present in the dotfiles
 cd $REPO_DIR
-./replace_my_email.sh
+./remove_sensitive_info.sh
