@@ -43,8 +43,8 @@ do
     #echo checking mac adress $mac_adress ${devices[$mac_adress]}
     if [[ $(is_connected $mac_adress) = "1" ]]; then
         INFO_SYMBOL=${devices[$mac_adress]}
-        #echo -- $mac_adress $INFO_SYMBOL --
-        break
+        echo $INFO_SYMBOL
+        exit
     fi
 done
 
