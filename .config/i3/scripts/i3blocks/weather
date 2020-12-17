@@ -22,7 +22,12 @@ TEMP="$(echo $RESPONSE | jq .'main.temp')"
 
 WEATHER_TEMP=$(echo "${RESPONSE}" | grep -o -e '\"temp\":\-\?[0-9]*' | awk -F ':' '{print $2}' | tr -d '"')
 
-TEMP_ROUNDED=$(printf "%.1f\n" $TEMP | sed 's/,/./g')
+
+# if python is present, we use it to round the temperature
+which python &>/dev/null
+if [[ $? -eq 0 ]]; then
+    TEMP=`python -c "print(round($TEMP, 1))"`
+fi
 
 #SUN_ICON=
 #CLOUD_ICON=
