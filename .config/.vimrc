@@ -48,12 +48,18 @@ nnoremap <C-H> <C-W><C-H>
 " show full filepath
 nnoremap <C-G> 1<C-G>
 
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" Enable commenting (out) visually seclected blocks
+vnoremap <silent> # :s/^/#/<cr>:noh<cr>
+vnoremap <silent> -# :s/^#//<cr>:noh<cr>
+
+
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-
-" Enable folding with the spacebar
-nnoremap <space> za
 
 
 " PEP 8 compliant indentation
@@ -90,6 +96,8 @@ syntax on
 
 
 
+
+" clipboard copypaste
 vmap <C-c> "+yi
 "vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p

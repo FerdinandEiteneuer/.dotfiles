@@ -256,7 +256,7 @@ bar {
 
 	#i3bar_command i3bar --transparency
 
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	
 	colors {
 		background $bg-color
@@ -280,6 +280,8 @@ exec rhythmbox
 #exec pycharm-community
 exec firefox
 exec i3-sensible-terminal -e "vim ~/.config/i3/config"
+exec redshift-gtk -l 52.5:13.4 -t 6500:4500
+
 
 # shortcut to connect to bluetooth headset + jplflip 5
 set $headset "38:18:4C:24:E6:B5"
