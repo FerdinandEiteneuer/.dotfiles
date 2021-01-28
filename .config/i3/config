@@ -61,7 +61,7 @@ default_floating_border none
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal pwd
 
 # kill focused window
 bindsym $mod+x kill
@@ -295,4 +295,3 @@ bindsym $mod+b exec bluetoothctl disconnect
 # lockscreen
 #bindsym $mod+f exec $HOME/.config/i3/scripts/lock/lock.sh
 bindsym $mod+f exec $HOME/.config/i3/scripts/exit_menu/exit.sh
-
